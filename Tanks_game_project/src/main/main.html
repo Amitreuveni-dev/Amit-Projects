@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="dist/main.js" defer></script>
+    <script></script>
+    <script type="module" src="../settings/dist/settings.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        const tooltipList = [...tooltipTriggerList].map(el => new bootstrap.Tooltip(el));
+      });
+    </script>
+    <script src="../effects/dist/effects.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="dist/main.css" />
+    <link rel="stylesheet" href="./dist/tank3d.css">
+    <link rel="stylesheet" href="./dist/nav.css" />
+    <link rel="stylesheet" href="./dist/footer.css" />
+  </head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navBar">
+    <div class="container-fluid">
+      <span class="navbar-brand navBar__text">Final Project</span>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link navBar__text" href="../contact/contacnt.html">contact us <i class="fa fa-phone"
+                aria-hidden="true"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navBar__text" href="../settings/settings.html">settings <i class="fa fa-cog fa-lg"
+                aria-hidden="true"></i></a>
+          </li>
+          <li>
+            <a class="nav-link navBar__text" data-bs-toggle="tooltip" data-bs-placement="bottom"
+              data-bs-title="Use arrows/WASD to move, space/enter to shoot">
+              info <i class="fa fa-info-circle" aria-hidden="true"></i>
+            </a>
+          </li>
+        </ul>
+        <article class="header__titles">
+        </article>
+      </div>
+
+      <div>
+        <button id="muteBtn" type="button" class="btn btn-outline navButton" style="width: 50px"></button>
+        <button id="resetBtn" type="button" class="btn btn-outline navButton" style="width: 50px">
+          <i class="fa fa-repeat" aria-hidden="true"></i>
+
+        </button>
+
+      </div>
+    </div>
+  </nav>
+  <main class="main">
+    <div class="tanksRoot"></div>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__copyright">&copy; All rights reserved 2025</p>
+  </footer>
+</body>
+
+</html>

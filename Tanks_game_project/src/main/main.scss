@@ -1,0 +1,201 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(90deg, #722828, black, #2c3453);
+  color: #2b2e4a;
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  font-family: system-ui;
+  line-height: 1.5;
+  color: hsl(0deg 0% 5%);
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+button {
+  background-color: #4e54c8;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 600;
+  border: 1px solid white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+
+  &:hover {
+    background-color: #6c72de;
+    transform: scale(1.05);
+  }
+
+  &:active {
+    background-color: #3a40a1;
+  }
+}
+
+.main {
+  border: 20px solid gray;
+  width: 1200px;
+  height: 800px;
+  margin: 0.5rem auto;
+  background-color: rgb(218, 218, 218);
+  background-image: url("../../assets/background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
+
+@media (min-width: 1211px) {
+  .main {
+    width: 1200px;
+    height: 800px;
+  }
+}
+
+@media (max-width: 1210px) {
+  .main {
+    width: 800px;
+    height: 650px;
+  }
+}
+
+@media (max-width: 815px) {
+  .main {
+    width: 550px;
+    height: 550px;
+  }
+}
+
+.tanksRoot {
+  position: absolute;
+  inset: 0;
+}
+
+.footer {
+  position: sticky;
+
+  background-color: #4e54c8;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2rem;
+  flex-shrink: 0;
+  height: 40px;
+
+  &__copyright {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  &__sub-title {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  button {
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 8px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+    }
+
+    &:hover {
+      background-color: #6c72de;
+      transform: scale(1.05);
+    }
+
+    &:active {
+      background-color: #3a40a1;
+    }
+  }
+}
+
+.bullet {
+  width: 8px;
+  height: 8px;
+  background-color: yellow;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.tank {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  transition: transform 0.1s ease;
+}
+
+
+.facing-up {
+  transform: rotate(0deg);
+}
+
+.facing-down {
+  transform: rotate(180deg);
+}
+
+.facing-left {
+  transform: rotate(-90deg);
+}
+
+.facing-right {
+  transform: rotate(90deg);
+}
+
+.facing-up-right {
+  transform: rotate(45deg);
+}
+
+.facing-up-left {
+  transform: rotate(-45deg);
+}
+
+.facing-down-right {
+  transform: rotate(135deg);
+}
+
+.facing-down-left {
+  transform: rotate(-135deg);
+}

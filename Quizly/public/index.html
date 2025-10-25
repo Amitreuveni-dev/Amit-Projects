@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizly</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <header>
+        <nav id="nav-buttons">
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <h1>Welcome to Quizly</h1>
+            <p>Create, play, and share quizzes with friends and the world!</p>
+            <button id="startQuizBtn">Start Exploring</button>
+        </section>
+
+        <section id="featured-quizzes">
+            <h2>Featured Quizzes</h2>
+            <div id="quiz-list">
+            </div>
+        </section>
+    </main>
+
+    <script type="module">
+        import { checkLoginStatus, loadFeaturedQuizzes } from "./index.js";
+
+        checkLoginStatus();
+        loadFeaturedQuizzes();
+
+        document.getElementById("createQuizBtn")?.addEventListener("click", (e) => {
+            checkLoginStatus().then((isLoggedIn) => {
+                if (isLoggedIn) {
+                    window.location.href = "./create/index.html";
+                } else {
+                    alert("You need to be logged in to create a quiz");
+                }
+            }).catch((error) => {
+                console.error("Error checking login status:", error);
+                alert("Something went wrong. Please try again.");
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+.navBar {
+  font-weight: 500;
+  background: linear-gradient(90deg, #722828, black, #2c3453);
+  border-bottom: 1px solid #ffffff;
+  &__text {
+    color: white;
+    padding: 2px 0;
+    transition: border 0.3s ease, padding 0.3s ease;
+
+    &:hover {
+      color: rgb(255, 255, 255);
+      border-bottom: 1px solid #ffffff;
+      border-top: 1px solid #ffffff;
+      padding: 4px 0;
+    }
+  }
+}
+.navButton {
+  align-items: center;
+  color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(60, 60, 60, 0.07);
+  transition: background-color 0.3s, color 0.3s, transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    border: 1px solid #929191;
+    background-color: rgb(161, 180, 209);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(60, 60, 60, 0.13);
+    color: white;
+  }
+
+  &:active {
+    background-color: #9e9e9e;
+    transform: scale(0.95);
+  }
+}
+.header {
+  &__main-title {
+    font-size: 1rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  &__sub-title {
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+}
