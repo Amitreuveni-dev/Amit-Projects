@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./style.css";
 
 
@@ -37,20 +38,13 @@ const initialFacts = [
 
 function App() {
 
-  const appTitle = "Today I Learned";
+  const [showForm, SetShowForm] = useState(false);
+
   return (
     <>
-      {/* Header */}
-      <header className="header">
-        <div className="logo">
-          <img src="logo.png" className="header_img" alt="Today I Learned Logo" />
-          <h1>{appTitle}</h1>
-        </div>
+      <Header showForm={showForm} SetShowForm={SetShowForm} />
 
-        <button className="btn btn-large btn-open">Share a fact</button>
-      </header>
-
-      <NewFactForm />
+      {showForm ? <NewFactForm /> : null}
 
       <main className="main">
         <CategoryFilter />
@@ -60,10 +54,24 @@ function App() {
   );
 }
 
-function NewFactForm() {
+function Header({ showForm, SetShowForm }) {
+  const appTitle = "Today I Learned";
+
   return (
-    <form className="fact-form">fact form</form>
+    < header className="header" >
+      <div className="logo">
+        <img src="logo.png" className="header_img" alt="Today I Learned Logo" />
+        <h1>{appTitle}</h1>
+      </div>
+
+      <button className="btn btn-large btn-open"
+        onClick={() => SetShowForm(show => !show)}
+      >
+        {showForm ? "Close" : "Share a fact"}
+      </button>
+    </header >
   )
+
 }
 
 
@@ -77,6 +85,46 @@ const CATEGORIES = [
   { name: "history", color: "#f97316" },
   { name: "news", color: "#8b5cf6" },
 ];
+
+
+function NewFactForm() {
+
+  const [text, setText] = useState("");
+  const [source, setSource] = useState("");
+  const [category, setCategory] = useState("");
+  const textLength = text.length;
+
+  function handleSubmit (e) {
+    e.preventDefault();
+    console.log(text, source, category);
+  }
+
+  return (
+    <form className="fact-form" onSubmit={handleSubmit}>
+      <input type="text" placeholder="Share a fact with the world... "
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+      />
+      <span>
+        {200 - textLength}
+        {textLength === 200 && " — You have reached the maximum length"}
+      </span>
+      <input type="text" placeholder="Trustworthy source..."
+        value={source}
+        onChange={(e) => setSource(e.target.value)}
+      />
+      <select value={category} onChange={(e) => setCategory(e.target.value)}>
+        <option value="">Choose category:</option>
+        {CATEGORIES.map((cat) => (
+          <option key={cat.name} value={cat.name}>
+            {cat.name.toUpperCase()}
+          </option>))}
+      </select>
+      <button className="btn btn-large">post</button>
+    </form>
+  )
+}
+
 
 
 function CategoryFilter() {
