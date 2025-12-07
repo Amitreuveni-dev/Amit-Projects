@@ -1,1 +1,0 @@
-"tall enough to ride";
