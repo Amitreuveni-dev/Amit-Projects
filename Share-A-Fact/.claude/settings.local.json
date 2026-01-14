@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run build:*)",
+      "Bash(del \"c:\\\\Users\\\\amitr\\\\Amit-Projects\\\\Share-A-Fact\\\\src\\\\types.ts\")"
+    ]
+  }
+}

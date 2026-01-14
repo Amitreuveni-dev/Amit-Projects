@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #292524;
+  color: #fafaf9;
+  font-family: "sono", sans-serif;
+  padding: 36px 48px 0px;
+  font-size: 14px;
+}
+
+#root {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+ul {
+  list-style: none;
+}
+
+section {
+  overflow: auto;
+  padding-bottom: 40px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  #root {
+    padding: 24px;
+  }
+}

@@ -1,0 +1,66 @@
+.factForm {
+  background-color: #44403c;
+  margin-bottom: 40px;
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-radius: 16px;
+
+  @media (max-width: 1111px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  @media (max-width: 600px) {
+    padding: 16px;
+  }
+}
+
+.input,
+.select {
+  width: 220px;
+  background-color: #78716c;
+  border: none;
+  border-radius: 100px;
+  padding: 16px;
+  font-size: 18px;
+  color: inherit;
+  font-family: inherit;
+
+  @media (max-width: 1111px) {
+    width: auto;
+  }
+}
+
+.input::placeholder {
+  color: #a8a29e;
+}
+
+.inputText {
+  flex-grow: 1;
+}
+
+.charCount {
+  font-weight: 600;
+  font-size: 18px;
+  margin-right: 18px;
+}
+
+.btn {
+  border: none;
+  font-family: "coiny", sans-serif;
+  line-height: 1;
+  text-transform: uppercase;
+  font-size: 24px;
+  padding: 16px 26px 14px;
+  background-image: linear-gradient(135deg, #3b82f6, #ef4444, #16a34a, #eab308);
+  color: inherit;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: 0.3s;
+
+  &:hover {
+    transform: scale(105%) rotate(+0.8deg);
+  }
+}
