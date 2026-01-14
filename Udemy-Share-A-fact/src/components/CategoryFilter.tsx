@@ -1,0 +1,36 @@
+import { CATEGORIES } from "../constants/categories";
+
+interface CategoryFilterProps {
+  setCurrentCategory: React.Dispatch<React.SetStateAction<string>>;
+}
+
+function CategoryFilter({ setCurrentCategory }: CategoryFilterProps) {
+  return (
+    <aside>
+      <ul>
+        <li className="category">
+          <button
+            className="btn btn-all-categories"
+            onClick={() => setCurrentCategory("all")}
+          >
+            All
+          </button>
+        </li>
+
+        {CATEGORIES.map((cat) => (
+          <li key={cat.name} className="category">
+            <button
+              className="btn btn-category"
+              style={{ backgroundColor: cat.color }}
+              onClick={() => setCurrentCategory(cat.name)}
+            >
+              {cat.name}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </aside>
+  );
+}
+
+export default CategoryFilter;
