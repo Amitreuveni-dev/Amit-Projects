@@ -1,0 +1,189 @@
+@use '../../styles/mixins' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background-color: var(--color-bg-primary);
+  border-bottom: 1px solid var(--color-border);
+  @include transition(background-color, border-color);
+}
+
+.container {
+  @include container;
+  @include flex-between;
+  height: var(--header-height);
+}
+
+.logo {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: -0.5px;
+  @include transition(color);
+
+  &:hover {
+    color: var(--color-primary-hover);
+  }
+}
+
+// Desktop Navigation
+.nav {
+  @include respond-below('md') {
+    display: none;
+  }
+}
+
+.navList {
+  display: flex;
+  gap: var(--spacing-lg);
+}
+
+.navLink {
+  font-size: var(--font-size-md);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  padding: var(--spacing-sm) 0;
+  position: relative;
+  @include transition(color);
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    @include transition(width);
+  }
+
+  &:hover {
+    color: var(--color-text-primary);
+
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+// Controls
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.fontSizeControls,
+.themeControls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs);
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+
+  @include respond-below('sm') {
+    display: none;
+  }
+}
+
+.fontSizeButton,
+.themeButton {
+  @include flex-center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  @include transition(background-color, color);
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-bg-tertiary);
+    color: var(--color-text-primary);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.themeButton {
+  &.active {
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+
+    &:hover {
+      background-color: var(--color-primary-hover);
+    }
+  }
+}
+
+// Mobile Menu Button
+.mobileMenuButton {
+  @include flex-center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  color: var(--color-text-primary);
+  @include transition(background-color);
+
+  @include respond-to('md') {
+    display: none;
+  }
+
+  &:hover {
+    background-color: var(--color-bg-secondary);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+// Mobile Navigation
+.mobileNav {
+  position: absolute;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  background-color: var(--color-bg-primary);
+  border-bottom: 1px solid var(--color-border);
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  @include transition(transform, opacity, visibility);
+
+  @include respond-to('md') {
+    display: none;
+  }
+
+  &.open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.mobileNavList {
+  @include flex-column;
+  padding: var(--spacing-md);
+}
+
+.mobileNavLink {
+  display: block;
+  padding: var(--spacing-md);
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  border-radius: var(--radius-md);
+  @include transition(background-color);
+
+  &:hover {
+    background-color: var(--color-bg-secondary);
+  }
+}
