@@ -1,13 +1,5 @@
-import { useState, useCallback } from 'react';
-import {
-  Menu,
-  X,
-  Sun,
-  Moon,
-  Contrast,
-  AArrowUp,
-  AArrowDown,
-} from 'lucide-react';
+import { useState, useCallback, type MouseEvent } from 'react';
+import { Menu, X, Sun, Moon, Contrast, AArrowUp, AArrowDown } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { setTheme } from '../../store/slices/themeSlice';
 import { increaseFontSize, decreaseFontSize } from '../../store/slices/uiSlice';
@@ -20,6 +12,18 @@ const NAV_LINKS: NavLink[] = [
   { id: 'projects', label: 'Projects', href: '#projects' },
   { id: 'contact', label: 'Contact', href: '#contact' },
 ];
+
+const scrollToSection = (e: MouseEvent<HTMLAnchorElement>, href: string): void => {
+  e.preventDefault();
+  const targetId = href.replace('#', '');
+  const element = document.getElementById(targetId);
+  if (element) {
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }
+};
 
 interface ThemeButtonProps {
   mode: ThemeMode;
@@ -66,14 +70,20 @@ const Header = (): React.JSX.Element => {
     setIsMobileMenuOpen((prev) => !prev);
   }, []);
 
-  const closeMobileMenu = useCallback(() => {
+  const handleNavClick = useCallback((e: MouseEvent<HTMLAnchorElement>, href: string) => {
+    scrollToSection(e, href);
     setIsMobileMenuOpen(false);
   }, []);
 
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <a href="#hero" className={styles.logo} aria-label="Go to home">
+        <a
+          href="#hero"
+          className={styles.logo}
+          aria-label="Go to home"
+          onClick={(e) => scrollToSection(e, '#hero')}
+        >
           AR
         </a>
 
@@ -82,7 +92,11 @@ const Header = (): React.JSX.Element => {
           <ul className={styles.navList}>
             {NAV_LINKS.map((link) => (
               <li key={link.id}>
-                <a href={link.href} className={styles.navLink}>
+                <a
+                  href={link.href}
+                  className={styles.navLink}
+                  onClick={(e) => scrollToSection(e, link.href)}
+                >
                   {link.label}
                 </a>
               </li>
@@ -160,7 +174,11 @@ const Header = (): React.JSX.Element => {
         <ul className={styles.mobileNavList}>
           {NAV_LINKS.map((link) => (
             <li key={link.id}>
-              <a href={link.href} className={styles.mobileNavLink} onClick={closeMobileMenu}>
+              <a
+                href={link.href}
+                className={styles.mobileNavLink}
+                onClick={(e) => handleNavClick(e, link.href)}
+              >
                 {link.label}
               </a>
             </li>

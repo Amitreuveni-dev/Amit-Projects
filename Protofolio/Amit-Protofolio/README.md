@@ -1,75 +1,96 @@
-# React + TypeScript + Vite
+# Amit Reuveni - Professional Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, scroll-driven portfolio website with Samsung-style animations built with React, TypeScript, and Framer Motion.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Frontend:** React 19 + TypeScript + Vite
+- **State Management:** Redux Toolkit
+- **Styling:** SCSS Modules with CSS Variables
+- **Animations:** Framer Motion
+- **Icons:** Lucide React
 
-## React Compiler
+## Project Structure
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
-
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── components/
+│   ├── Header/          # Sticky header with nav, font resizer, theme toggles
+│   ├── Hero/            # Landing section with tech stack icons
+│   ├── Timeline/        # Vertical timeline (Military, Education, Volunteering)
+│   ├── Projects/        # Glassmorphism project cards
+│   └── Contact/         # Contact section with copy-to-clipboard email
+├── store/
+│   ├── index.ts         # Redux store configuration
+│   └── slices/
+│       ├── themeSlice.ts   # Light/Dark/High-Contrast theme state
+│       └── uiSlice.ts      # Font size and accessibility state
+├── styles/
+│   ├── _variables.scss  # CSS variables for themes
+│   ├── _mixins.scss     # SCSS mixins (responsive, flex, transitions)
+│   └── global.scss      # Global styles and reset
+├── types/
+│   └── index.ts         # TypeScript interfaces and types
+├── App.tsx              # Main app component
+└── main.tsx             # Entry point with Redux Provider
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Features
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Implemented
+- [x] Sticky Header with smooth scroll navigation
+- [x] Font Resizer (A+/A-) updating `--base-font-size` CSS variable
+- [x] Theme Toggles: Light / Dark / High-Contrast
+- [x] Hero Section with animated tech stack icons
+- [x] Timeline with staggered spring animations (Military olive, Education blue, Volunteer purple)
+- [x] Projects Grid with glassmorphism cards and hover scale effects
+- [x] Contact Section with click-to-copy email toast
+- [x] Samsung-style scroll animations (`staggerChildren`, `spring` transitions)
+- [x] Responsive design with mobile menu
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Pending / Future
+- [ ] Backend: Node.js + Express API
+- [ ] MongoDB integration for dynamic projects
+- [ ] Floating accessibility button
+- [ ] Project filtering by technology
+- [ ] Blog section
+- [ ] Dark mode persistence improvements
+
+## Key Files to Edit
+
+| Feature | File(s) |
+|---------|---------|
+| Navigation links | `src/components/Header/Header.tsx` |
+| Personal info (name, subtitle) | `src/components/Hero/Hero.tsx` |
+| Tech stack icons | `src/components/Hero/Hero.tsx` |
+| Timeline events | `src/components/Timeline/Timeline.tsx` |
+| Projects data | `src/components/Projects/Projects.tsx` |
+| Contact info (email, socials) | `src/components/Contact/Contact.tsx` |
+| Theme colors | `src/styles/_variables.scss` |
+| Global styles | `src/styles/global.scss` |
+
+## Scripts
+
+```bash
+npm run dev      # Start development server
+npm run build    # Build for production
+npm run preview  # Preview production build
+npm run lint     # Run ESLint
 ```
+
+## Environment Variables
+
+Create a `.env` file:
+
+```env
+VITE_MONGO_URI=mongodb://localhost:27017/portfolio
+VITE_API_URL=http://localhost:3000/api
+```
+
+## Design Decisions
+
+1. **No index.ts barrel files** - Direct imports from component files
+2. **SCSS Modules** - Scoped styles per component
+3. **CSS Variables** - Theme switching without re-render
+4. **Spring animations** - `stiffness: 100, damping: 15` for premium feel
+5. **Glassmorphism** - `backdrop-filter: blur(20px)` on project cards
