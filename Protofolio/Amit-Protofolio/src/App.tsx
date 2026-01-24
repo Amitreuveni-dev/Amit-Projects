@@ -23,17 +23,12 @@ const App = (): React.JSX.Element => {
   }, [themeMode]);
 
   useEffect(() => {
-    document.documentElement.style.setProperty(
-      '--base-font-size',
-      FONT_SIZE_MAP[fontSize]
-    );
+    document.documentElement.style.setProperty('--base-font-size', FONT_SIZE_MAP[fontSize]);
   }, [fontSize]);
 
   return (
     <>
-      <a href="#main-content" className="skip-link">
-        Skip to main content
-      </a>
+      <a href="#main-content" className="skip-link">Skip to main content</a>
       <Header />
       <main id="main-content">
         <Hero />

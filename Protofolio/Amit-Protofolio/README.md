@@ -94,3 +94,26 @@ VITE_API_URL=http://localhost:3000/api
 3. **CSS Variables** - Theme switching without re-render
 4. **Spring animations** - `stiffness: 100, damping: 15` for premium feel
 5. **Glassmorphism** - `backdrop-filter: blur(20px)` on project cards
+
+## Code Style Preferences
+
+- **Compact JSX** - Keep JSX elements on 1-2 lines when possible, avoid breaking each attribute to a new line
+- **Framer Motion variants** - Animation logic stays in TSX files (cannot be moved to SCSS)
+- **Smooth scrolling** - Uses both CSS `scroll-behavior: smooth` and JS `scrollIntoView({ behavior: 'smooth' })`
+- **Links opening in new tab** - Always use `target="_blank" rel="noopener noreferrer"` for external links
+
+## Claude Code Instructions
+
+When working on this project:
+
+1. **Read this README first** to understand the project structure
+2. **Key files to modify**:
+   - Personal info: `Hero.tsx` (name, tech stack with links)
+   - Timeline data: `Timeline.tsx` (education, military, volunteer events)
+   - Projects: `Projects.tsx` (project cards with GitHub/live links)
+   - Contact: `Contact.tsx` (email, LinkedIn, GitHub URLs)
+   - Styling: `src/styles/_variables.scss` for theme colors
+3. **Animation variants** cannot be moved to SCSS - they must stay in TypeScript
+4. **Tech stack icons** in Hero have `link` property for external URLs
+5. **Timeline themes**: `military` (olive), `education` (blue), `volunteer` (purple)
+6. **Run `npm run dev`** to start the development server on localhost:5173

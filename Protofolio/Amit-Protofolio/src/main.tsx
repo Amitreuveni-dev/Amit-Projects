@@ -12,8 +12,6 @@ if (!rootElement) {
 
 createRoot(rootElement).render(
   <StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <Provider store={store}><App /></Provider>
   </StrictMode>
 );

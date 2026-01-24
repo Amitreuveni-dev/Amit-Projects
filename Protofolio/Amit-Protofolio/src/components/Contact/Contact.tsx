@@ -49,54 +49,24 @@ const Contact = (): React.JSX.Element => {
   return (
     <section id="contact" className={styles.contact} ref={sectionRef}>
       <div className={styles.container}>
-        <motion.div
-          className={styles.content}
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-        >
-          <motion.h2 className={styles.title} variants={itemVariants}>
-            Let&apos;s Work Together
-          </motion.h2>
-
+        <motion.div className={styles.content} variants={containerVariants} initial="hidden" animate={isInView ? 'visible' : 'hidden'}>
+          <motion.h2 className={styles.title} variants={itemVariants}>Let&apos;s Work Together</motion.h2>
           <motion.p className={styles.description} variants={itemVariants}>
-            I&apos;m currently looking for new opportunities. Whether you have a
-            question or just want to say hi, I&apos;ll do my best to get back to
-            you!
+            I&apos;m currently looking for new opportunities. Whether you have a question or just want to say hi, I&apos;ll do my best to get back to you!
           </motion.p>
-
           <motion.div className={styles.emailWrapper} variants={itemVariants}>
-            <button
-              type="button"
-              className={styles.emailButton}
-              onClick={handleCopyEmail}
-              aria-label={copied ? 'Email copied!' : 'Click to copy email'}
-            >
+            <button type="button" className={styles.emailButton} onClick={handleCopyEmail} aria-label={copied ? 'Email copied!' : 'Click to copy email'}>
               <Mail size={20} />
               <span className={styles.email}>{EMAIL}</span>
-              <span className={styles.copyIcon}>
-                {copied ? <Check size={18} /> : <Copy size={18} />}
-              </span>
+              <span className={styles.copyIcon}>{copied ? <Check size={18} /> : <Copy size={18} />}</span>
             </button>
             {copied && (
-              <motion.span
-                className={styles.toast}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-              >
-                Copied to clipboard!
-              </motion.span>
+              <motion.span className={styles.toast} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>Copied to clipboard!</motion.span>
             )}
           </motion.div>
-
           <motion.div className={styles.socials} variants={itemVariants}>
-            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="LinkedIn Profile">
-              <Linkedin size={24} />
-            </a>
-            <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="GitHub Profile">
-              <Github size={24} />
-            </a>
+            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="LinkedIn Profile"><Linkedin size={24} /></a>
+            <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="GitHub Profile"><Github size={24} /></a>
           </motion.div>
         </motion.div>
       </div>
